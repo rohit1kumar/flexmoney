@@ -19,7 +19,7 @@ app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/batch', batchRoutes);
 
 const port = process.env.PORT || 3000;
-console.log(port)
+
 const startServer = async () => {
     try {
         await sequelize.sync();

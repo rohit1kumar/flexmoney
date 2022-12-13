@@ -68,6 +68,14 @@ export const login = async (req, res) => {
     try {
         let { email, password } = req.body;
 
+        // BASIC VALIDATION
+        if (!email || !password) {
+            return res.status(400).json({
+                status: 'error',
+                message: 'Please enter all fields'
+            });
+        }
+
         let user = await User.findOne({ where: { email } });
         if (!user) {
             return res.status(404).json({

@@ -8,6 +8,13 @@ export const addUserToBatchAndPay = async (req, res) => {
         const { id } = req.user;
         const { batchTiming, amount } = req.body;
 
+        if (!batchTiming || !amount) {
+            return res.status(400).json({
+                status: "error",
+                message: "Please enter all fields",
+            });
+        }
+
         let batch = await Batch.findOne({ where: { id: id } });
         // if user is already in a batch then don't let them join another batch
         if (batch) {
@@ -65,6 +72,13 @@ export const changeBatchTimeAndPay = async (req, res) => {
         const t = await sequelize.transaction();
         const { id } = req.user;
         const { batchTiming, amount } = req.body;
+
+        if (!batchTiming || !amount) {
+            return res.status(400).json({
+                status: "error",
+                message: "Please enter all fields",
+            });
+        }
 
         let batch = await Batch.findOne({ where: { id: id } });
 
