@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config({ path: '../.env' });
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 import { sequelize } from './db/connect.js';
 import userRoutes from './routes/user.js';
@@ -9,6 +10,7 @@ import batchRoutes from './routes/batch.js';
 
 const app = express();
 
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -7,6 +7,14 @@ export const register = async (req, res) => {
     try {
         let { name, email, password, dateOfBirth } = req.body;
 
+        // BASIC VALIDATION
+        if (!name || !email || !password || !dateOfBirth) {
+            return res.status(400).json({
+                status: 'error',
+                message: 'Please enter all fields'
+            });
+        }
+
         let user = await User.findOne({ where: { email } });
         if (user) {
             return res.status(400).json({
@@ -14,7 +22,8 @@ export const register = async (req, res) => {
                 message: 'Email already exists'
             });
         }
-        // check if age is between 18 and 65
+
+        // CHECK IF AGE IS BETWEEN 18 AND 65
         const age = new Date().getFullYear() - new Date(dateOfBirth).getFullYear();
         if (age < 18 || age > 65) {
             return res.status(400).json({
