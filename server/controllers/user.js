@@ -47,11 +47,7 @@ export const register = async (req, res) => {
                 maxAge: 864_000_000, // 10 days
             }).json({
                 status: 'success',
-                message: `User registered with email ${user.email}`,
-                user: {
-                    id: user.id,
-                    name: user.name
-                },
+                message: `User registered with id ${user.id}}`,
                 token
             });
     } catch (error) {
@@ -102,11 +98,7 @@ export const login = async (req, res) => {
                 maxAge: 864_000_000, // 10 days
             }).json({
                 status: 'success',
-                message: `User logged in with email ${user.email}`,
-                user: {
-                    id: user.id,
-                    name: user.name
-                },
+                message: `User logged in with email ${user.id}`,
                 token
             });
     } catch (error) {
@@ -151,11 +143,10 @@ export const getUser = async (req, res) => {
         }
         res.status(200).json({
             status: 'success',
-            message: `User found with email ${user.email}`,
+            message: 'User found',
             user: {
                 id: user.id,
-                name: user.name,
-                email: user.email
+                name: user.name
             }
         });
     } catch (error) {
