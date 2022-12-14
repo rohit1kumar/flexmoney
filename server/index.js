@@ -8,6 +8,7 @@ import { sequelize } from './db/connect.js';
 import userRoutes from './routes/user.js';
 import batchRoutes from './routes/batch.js';
 import paymentRoutes from './routes/payment.js';
+import notFound from './middlewares/error.js';
 
 const app = express();
 
@@ -19,6 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/batch', batchRoutes);
 app.use('/api/v1/payment', paymentRoutes);
+app.use(notFound);
+
+
 
 const port = process.env.PORT || 3000;
 
