@@ -5,7 +5,7 @@ import Batch from './batch.js';
 User.hasOne(Batch);
 Batch.belongsTo(User);
 
-User.hasOne(Payment);
+User.hasMany(Payment);
 Payment.belongsTo(User);
 
 export { User, Payment, Batch };
