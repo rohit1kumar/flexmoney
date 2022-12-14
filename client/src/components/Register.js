@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+const bastURL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api/v1';
 
 const Register = () => {
 
@@ -21,7 +22,7 @@ const Register = () => {
         if (isSubmit) {
             try {
                 console.log(formValues);
-                let res = await fetch(`${process.env.REACT_APP_BASE_URL}/user/register`, {
+                let res = await fetch(`${bastURL}/user/register`, {
                     method: "POST",
                     body: JSON.stringify(formValues),
                     headers: {

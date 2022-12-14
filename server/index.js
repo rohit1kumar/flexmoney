@@ -22,9 +22,7 @@ app.use('/api/v1/batch', batchRoutes);
 app.use('/api/v1/payment', paymentRoutes);
 app.use(notFound);
 
-
-
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 const startServer = async () => {
     try {

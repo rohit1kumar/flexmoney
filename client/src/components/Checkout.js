@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useFetch } from '../hooks/useFetch'
 import { useNavigate } from 'react-router-dom';
 import Register from './Register';
+const baseURL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api/v1';
 const Checkout = () => {
     const [success, setSuccess] = useState(false);
     const [details, setDetails] = useState({});
@@ -9,7 +10,7 @@ const Checkout = () => {
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
 
-    const { data, loading } = useFetch({ url: `${process.env.REACT_APP_BASE_URL}/user/me`, token });
+    const { data, loading } = useFetch({ url: `${baseURL}/user/me`, token });
     if (loading) {
         return (
             <div className='flex justify-center items-center h-screen w-screen'>
@@ -32,7 +33,7 @@ const Checkout = () => {
         e.preventDefault();
         try {
             console.log(batchValue);
-            let res = await fetch(`${process.env.REACT_APP_BASE_URL}/batch/join`, {
+            let res = await fetch(`${baseURL}/batch/join`, {
                 method: "POST",
                 body: JSON.stringify(batchValue),
                 headers: {
