@@ -70,4 +70,6 @@ Import the **yoga.postman_collection.json** file in your postman and test the AP
   <source src="https://i.imgur.com/GKJKny7.mp4" type="video/mp4">
 </video> -->
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/46YU0-6wXVs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<video width="320" height="240" controls>
+  <source src="https://www.youtube.com/watch?v=46YU0-6wXVs" type="video/mp4">
+</video>
