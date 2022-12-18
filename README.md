@@ -64,7 +64,6 @@ This is a simple Yoga Class Booking App. In this project I've used ReactJS for t
 
 ## Want to test the API?
 
-Import the **yoga.postman_collection.json** file in your postman and test the API endpoints with the h
-elp of video below.
+Import the **yoga.postman_collection.json** file in your postman and test the API endpoints with the help of video below.
 
 [Watch the video](https://www.youtube.com/watch?v=46YU0-6wXVs)
