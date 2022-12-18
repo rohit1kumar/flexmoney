@@ -1,0 +1,42 @@
+version: '3'
+services:
+  server:
+    build: ./server
+    restart: unless-stopped
+    container_name: flexmoney_server_app
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - PORT=4000
+      - DATABASE_NAME=flexmoney
+      - DATABASE_USER=flexmoney
+      - DATABASE_PASSWORD=flexmoney
+      - DATABASE_HOST=db
+      - DATABASE_PORT=3306
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    container_name: flexmoney_db
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: flexmoney
+      MYSQL_USER: flexmoney
+      MYSQL_PASSWORD: flexmoney
+
+  nginx:
+    build: ./nginx
+    restart: unless-stopped
+    container_name: flexmoney_nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+
+volumes:
+  db_data:
